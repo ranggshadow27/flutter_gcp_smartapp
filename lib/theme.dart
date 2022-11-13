@@ -8,6 +8,7 @@ Color greenColor = Color(0xFF0F6651);
 Color iconBg1 = Color(0xFF19B79A);
 Color iconBg2 = Color(0xFF19B745);
 Color iconBg3 = Color(0xFF19ADB7);
+Color redColor = Color(0xFFFF6D6D);
 
 TextStyle interLight = GoogleFonts.inter(fontWeight: FontWeight.w300);
 TextStyle interMedium = GoogleFonts.inter(fontWeight: FontWeight.w500);
