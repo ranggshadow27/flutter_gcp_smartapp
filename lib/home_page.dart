@@ -2,10 +2,7 @@
 
 import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth_animation/main.dart';
 import 'package:flutter_auth_animation/theme.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:scroll_app_bar/scroll_app_bar.dart';
 
 void main() => runApp(HomePage());
 
@@ -34,16 +31,25 @@ class HomePage extends StatelessWidget {
               child: SizedBox(),
             ),
             DrawerTile(
-                color: blueColor, icon: Boxicons.bx_group, text: 'Profile'),
+                color: blueColor,
+                icon: Boxicons.bx_group,
+                text: 'Profile',
+                textcolor: blueColor),
             DrawerTile(
-                color: blueColor, icon: Boxicons.bx_calendar, text: 'Calendar'),
+                color: blueColor,
+                icon: Boxicons.bx_calendar,
+                text: 'Calendar',
+                textcolor: blueColor),
             DrawerTile(
-                color: Colors.red, icon: Boxicons.bx_log_out, text: 'Logout'),
+              color: Colors.red,
+              icon: Boxicons.bx_log_out,
+              text: 'Logout',
+              textcolor: Colors.red,
+            ),
           ],
         ),
       ),
-      appBar: ScrollAppBar(
-        controller: controller,
+      appBar: AppBar(
         backgroundColor: blueColor,
         title: Text(
           "Dashboard",
@@ -98,81 +104,76 @@ class HomePage extends StatelessWidget {
             ),
           ),
           child: SingleChildScrollView(
-            controller: controller,
-            child: Snap(
-              controller: controller.appBar,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 26,
-                      vertical: 10,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 12,
-                        ),
-                        Text(
-                          "Hi. Pak GO!",
-                          style: interSemibold.copyWith(
-                              fontSize: 16, color: Colors.white),
-                        ),
-                        Text(
-                          "Welcome to GCP Dashboard",
-                          style: interLight.copyWith(
-                              fontSize: 16, color: Colors.white),
-                        ),
-                        SizedBox(
-                          height: 42,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "MENU",
-                              style: interSemibold.copyWith(
-                                  fontSize: 16, color: Colors.white),
-                            ),
-                            SizedBox(width: 12),
-                            Expanded(
-                              child: Container(
-                                height: 2,
-                                decoration: BoxDecoration(
-                                  color: whiteColor,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 26,
+                    vertical: 10,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Text(
+                        "Hi. Pak GO!",
+                        style: interSemibold.copyWith(
+                            fontSize: 16, color: Colors.white),
+                      ),
+                      Text(
+                        "Welcome to GCP Dashboard",
+                        style: interLight.copyWith(
+                            fontSize: 16, color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: 42,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "MENU",
+                            style: interSemibold.copyWith(
+                                fontSize: 16, color: Colors.white),
+                          ),
+                          SizedBox(width: 12),
+                          Expanded(
+                            child: Container(
+                              height: 2,
+                              decoration: BoxDecoration(
+                                color: whiteColor,
+                                borderRadius: BorderRadius.circular(20),
                               ),
                             ),
-                          ],
-                        ),
-                        SizedBox(height: 28),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            MenuIcon(
-                                menuicon: Boxicons.bx_book,
-                                menutitle: "Laporan"),
-                            MenuIcon(
-                                menuicon: Boxicons.bx_notepad,
-                                menutitle: "Informasi"),
-                            MenuIcon(
-                                menuicon: Boxicons.bx_sitemap,
-                                menutitle: "Struktur"),
-                            MenuIcon(
-                                menuicon: Boxicons.bx_calendar_event,
-                                menutitle: "Event"),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 28),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          MenuIcon(
+                              menuicon: Boxicons.bx_book, menutitle: "Laporan"),
+                          MenuIcon(
+                              menuicon: Boxicons.bx_notepad,
+                              menutitle: "Informasi"),
+                          MenuIcon(
+                              menuicon: Boxicons.bx_sitemap,
+                              menutitle: "Struktur"),
+                          MenuIcon(
+                              menuicon: Boxicons.bx_calendar_event,
+                              menutitle: "Event"),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                    ],
                   ),
-                  WhiteContainer(maxWidth: maxWidth),
-                ],
-              ),
+                ),
+                WhiteContainer(maxWidth: maxWidth),
+              ],
             ),
           ),
         ),
@@ -185,6 +186,7 @@ class DrawerTile extends StatelessWidget {
   const DrawerTile({
     Key? key,
     required this.color,
+    required this.textcolor,
     required this.icon,
     required this.text,
   }) : super(key: key);
@@ -193,6 +195,7 @@ class DrawerTile extends StatelessWidget {
   final String text;
   final IconData icon;
   final Color color;
+  final Color textcolor;
   Widget build(BuildContext context) {
     return ListTile(
       leading: Icon(
@@ -201,7 +204,7 @@ class DrawerTile extends StatelessWidget {
       ),
       title: Text(
         text,
-        style: interSemibold.copyWith(),
+        style: interSemibold.copyWith(color: textcolor),
       ),
       onTap: () {
         Navigator.pop(context);

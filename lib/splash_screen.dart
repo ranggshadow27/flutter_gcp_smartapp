@@ -38,18 +38,15 @@ class _SplashScreenState extends State<SplashScreen> {
                 'assets/gcpt_2.png',
                 width: 220,
               ),
-              CircularProgressIndicator(
-                color: whiteColor,
-                strokeWidth: 1,
+              Container(
+                width: 15,
+                height: 15,
+                child: CircularProgressIndicator(
+                  color: whiteColor,
+                  strokeWidth: 1,
+                ),
               ),
               SizedBox(height: 20),
-              Text(
-                "Loading Application",
-                style: interSemibold.copyWith(
-                  color: whiteColor,
-                  fontSize: 10,
-                ),
-              )
             ],
           ),
         ),
